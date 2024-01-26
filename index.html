@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="root"></div>
+    <!-- Load Babel -->
+    <!-- Your custom script here -->
+    <script type="text/babel">
+        let list = [
+            { num: 1, title: 'title-1', content: 'content-1' },
+            { num: 2, title: 'title-2', content: 'content-2' },
+            { num: 3, title: 'title-3', content: 'content-3' },
+            { num: 4, title: 'title-4', content: 'content-4' },
+        ];
+        function Post(props) {
+            return (
+                <div>
+                    <span>{props.num}</span>
+                    <span>{props.title}</span>
+                    <span>{props.content}</span>
+                </div>
+            );
+        }
+        function PostList() {
+            let postList = [];
+            for (let i = 0; i < list.length; i++) {
+                postList.push(
+                    <Post key={list[i].num} num={list[i].num} title={list[i].title} content={list[i].content}></Post>
+                );
+            }
+            return (
+                <div>
+                    <div>
+                        {postList}
+                    </div>
+                    <div>
+                    </div>
+                </div>
+            )
+        }
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<PostList />);
+    </script>
+</body>
+
+</html>
